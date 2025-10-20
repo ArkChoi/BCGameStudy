@@ -10,6 +10,7 @@ public:
 	virtual ~AActor();
 
 	virtual void Tick();
+	virtual void Render();
 
 	__forceinline FVector2D GetActorLocation() const
 	{
@@ -22,7 +23,18 @@ public:
 		Location.Y = Value.Y;
 	}
 
+	__forceinline char GetShape()
+	{
+		return Shape;
+	}
+
+	void SetShape(char Temp)
+	{
+		Shape = Temp;
+	}
+
 private:
 	FVector2D Location;
+	char Shape;
 };
 

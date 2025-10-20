@@ -1,40 +1,19 @@
 #include <iostream>
-#include <fstream>
+#include "Engine.h"
+
+#include <vector>
 
 int main()
 {
-    std::ifstream Map("Level01.map");
+	FEngine* MyEngine;
+	MyEngine = new FEngine();
 
-    if (!Map.bad())
-    {
-        std::cout << Map.rdbuf();
-        Map.close();
-    }
+	MyEngine->Init();
+	MyEngine->Run();
+	MyEngine->Term();
 
-    return 0;
+	delete MyEngine;
+	MyEngine = nullptr;
+
+	return 0;
 }
-
-
-
-
-
-
-//#include <iostream>
-//#include "Engine.h"
-//
-//#include <vector>
-//
-//int main()
-//{
-//	FEngine* MyEngine;
-//	MyEngine = new FEngine();
-//
-//	MyEngine->Init();
-//	MyEngine->Run();
-//	MyEngine->Term();
-//
-//	delete MyEngine;
-//	MyEngine = nullptr;
-//
-//	return 0;
-//}

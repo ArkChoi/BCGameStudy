@@ -13,6 +13,9 @@ public:
 	std::vector<AActor*> GetAllActors() const; //문제는 있다만 나중에 고친다고..
 	AActor* SpawnActor(AActor* NewActor);
 
+	virtual void Tick();
+	virtual void Render();
+
 protected:
 	std::vector<AActor*> Actors;
 
