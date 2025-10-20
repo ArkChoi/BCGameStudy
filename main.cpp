@@ -1,25 +1,19 @@
 #include <iostream>
-#include "Actor.h"
-#include "Player.h"
+#include "Engine.h"
 
 #include <vector>
 
 int main()
 {
-	std::vector<AActor*> Actors;
-	Actors.push_back(new AActor());
-	Actors.push_back(new APlayer());
+	FEngine* MyEngine;
+	MyEngine = new FEngine();
 
-	for (auto Data : Actors)
-	{
-		Data->Tick();
-	}
+	MyEngine->Init();
+	MyEngine->Run();
+	MyEngine->Term();
 
-	for (int i = 0 ; i < Actors.size() ; i++)
-	{
-		delete Actors[i];
-	}
-	Actors.clear();
+	delete MyEngine;
+	MyEngine = nullptr;
 
 	return 0;
 }
