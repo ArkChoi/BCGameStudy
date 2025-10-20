@@ -1,15 +1,13 @@
 #include <iostream>
 #include <fstream>
 
-using namespace std;
-
 int main()
 {
-    ifstream Map("Level01.map");
+    std::ifstream Map("Level01.map");
 
     if (!Map.bad())
     {
-        cout << Map.rdbuf();
+        std::cout << Map.rdbuf();
         Map.close();
     }
 
