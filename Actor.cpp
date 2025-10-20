@@ -2,8 +2,9 @@
 #include <iostream>
 #include <Windows.h>
 
-AActor::AActor()
+AActor::AActor() : ZOrder(0), Shape(' ')
 {
+
 }
 
 AActor::~AActor()

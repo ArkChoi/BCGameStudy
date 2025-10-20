@@ -33,7 +33,9 @@ public:
 		Shape = Temp;
 	}
 
-private:
+protected:
+
+	int ZOrder;
 	FVector2D Location;
 	char Shape;
 };

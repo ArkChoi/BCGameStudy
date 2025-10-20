@@ -3,6 +3,8 @@
 #include <fstream>
 #include <string>
 #include <conio.h>
+#include <algorithm>
+#include <vector>
 
 #include "World.h"
 #include "Actor.h"
@@ -12,7 +14,10 @@
 #include "Floor.h"
 #include "Wall.h"
 
-FEngine* GEngine = nullptr;
+FEngine* FEngine::Instance = nullptr;
+
+//UECode
+//FEngine* GEngine = nullptr;
 
 FEngine::FEngine()
 {
@@ -66,11 +71,21 @@ void FEngine::Init()
                     NewActor->SetShape('G');
                     World->SpawnActor(NewActor);
                 }
+                       
+                {
+                    AActor* NewActor = new AWall();
+                    NewActor->SetActorLocation(FVector2D(X, Y));
+                    NewActor->SetShape(' ');
+                    World->SpawnActor(NewActor);
+                }
             }
             Y++;
             std::cout << std::endl;
         }
     }
+
+    std::sort(World->GetAllActors(), World->GetAllActors().end(), std::greater<AActor*>()); //vector<AActor*>
+
     MapFile.close();
 
     std::cout << GetWorld()->GetAllActors().size() << std::endl;
@@ -104,4 +119,19 @@ void FEngine::Tick()
 void FEngine::Render()
 {
     GetWorld()->Render();
+}
+
+void FEngine::Sort()
+{
+    int Max = GetWorld()->GetAllActors().size();
+    AActor* TempActors[Max];
+}
+
+void FEngine::Swap(AActor* FirstIndex, AActor* SecondIndex)
+{
+    AActor* Temp;
+
+    Temp = FirstIndex;
+    FirstIndex = SecondIndex;
+    SecondIndex = Temp;
 }

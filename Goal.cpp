@@ -2,6 +2,7 @@
 
 AGoal::AGoal()
 {
+	ZOrder = 1;
 }
 
 AGoal::~AGoal()
