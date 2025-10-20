@@ -33,3 +33,4 @@ protected: //내부 설계
 	int KeyCode = 0;
 };
 
+extern FEngine* GEngine;

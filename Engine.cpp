@@ -12,6 +12,8 @@
 #include "Floor.h"
 #include "Wall.h"
 
+FEngine* GEngine = nullptr;
+
 FEngine::FEngine()
 {
     World = nullptr;
