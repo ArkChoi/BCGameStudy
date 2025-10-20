@@ -9,7 +9,7 @@ public:
 	AActor();
 	virtual ~AActor();
 
-	void Tick();
+	virtual void Tick();
 
 	__forceinline FVector2D GetActorLocation() const
 	{

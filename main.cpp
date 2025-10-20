@@ -1,14 +1,25 @@
 #include <iostream>
 #include "Actor.h"
+#include "Player.h"
+
+#include <vector>
 
 int main()
 {
-	AActor* Actor;
-	Actor = new AActor;
+	std::vector<AActor*> Actors;
+	Actors.push_back(new AActor());
+	Actors.push_back(new APlayer());
 
-	Actor->Tick();
+	for (auto Data : Actors)
+	{
+		Data->Tick();
+	}
 
-	delete Actor;
+	for (int i = 0 ; i < Actors.size() ; i++)
+	{
+		delete Actors[i];
+	}
+	Actors.clear();
 
 	return 0;
 }
