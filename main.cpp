@@ -6,11 +6,14 @@ using namespace std;
 int main()
 {
     ifstream Map("Level01.map");
+
     if (!Map.bad())
     {
         cout << Map.rdbuf();
         Map.close();
     }
+
+    return 0;
 }
 
 
