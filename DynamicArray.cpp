@@ -4,6 +4,7 @@
 
 TDynamicArray::TDynamicArray()
 {
+	Data = new int[Size];
 }
 
 TDynamicArray::~TDynamicArray()
@@ -12,36 +13,32 @@ TDynamicArray::~TDynamicArray()
 
 void TDynamicArray::PushBack(int Value)
 {
-	if (StartPoint == nullptr)
+	if (Index < Size)
 	{
-		DaynamicData* NewNumber = new DaynamicData;
-		NewNumber->Data = Value;
-		NewNumber->BackData = nullptr;
-		StartPoint = NewNumber;
-		Size++;
+		Data[Index] = Value;
+		Index++;
 	}
 	else
 	{
-		DaynamicData* Temp = StartPoint;
-		DaynamicData* NewNumber = new DaynamicData;
-		NewNumber->Data = Value;
-		NewNumber->BackData = nullptr;
-		while (!(Temp->BackData == nullptr))
+		Size += 1;
+		int* NewArray = new int[Size];
+		for (int i = 0; i < (Size-1); i++)
 		{
-			Temp = (Temp->BackData);
+			NewArray[i] = Data[i];
 		}
-		Temp->BackData = NewNumber;
-		Size++;
+		delete[] Data;
+
+		Data = NewArray;
+
+		Data[Index] = Value;
+		Index++;
 	}
 }
 
-void TDynamicArray::AllDataPrint()
+void TDynamicArray::AllValuePrint()
 {
-	DaynamicData* Temp = StartPoint;
-	while (!(Temp->BackData == nullptr))
+	for (int i = 0; i < Size; i++)
 	{
-		std::cout << Temp->Data << std::endl;
-		Temp = (Temp->BackData);
+		std::cout << Data[i] << std::endl;
 	}
-	std::cout << Temp->Data << std::endl;
 }
