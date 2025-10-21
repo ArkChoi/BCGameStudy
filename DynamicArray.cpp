@@ -13,16 +13,20 @@ TDynamicArray::~TDynamicArray()
 
 void TDynamicArray::PushBack(int Value)
 {
-	if (Index < Size)
+	if (Index < Capacity)
 	{
 		Data[Index] = Value;
 		Index++;
+		Size++;
 	}
 	else
 	{
-		Size += 1;
-		int* NewArray = new int[Size];
-		for (int i = 0; i < (Size-1); i++)
+		if (Capacity == 0)
+		{
+			Capacity = 1;
+		}
+		int* NewArray = new int[Capacity*2];
+		for (int i = 0; i < Size; i++)
 		{
 			NewArray[i] = Data[i];
 		}
@@ -32,6 +36,9 @@ void TDynamicArray::PushBack(int Value)
 
 		Data[Index] = Value;
 		Index++;
+		Size++;
+
+		Capacity *= 2;
 	}
 }
 
