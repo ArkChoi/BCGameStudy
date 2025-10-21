@@ -9,9 +9,9 @@ UWorld::~UWorld()
 {
 }
 
-std::vector<AActor*> UWorld::GetAllActors() const
+void UWorld::GetAllActors(std::vector<AActor*>& OutActor) const
 {
-	return Actors;
+	OutActor = Actors;
 }
 
 //∆—≈‰∏Æ ∆–≈œ
