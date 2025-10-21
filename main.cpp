@@ -15,16 +15,16 @@ int main()
 	std::vector <int>test;
 	test.push_back(1);
 
-	TDynamicArray Test;
+	TDynamicArray <int>Test;
 	Test.PushBack(1);
 	Test.PushBack(3);
 	Test.PushBack(5);
 	Test.PushBack(7);
 
-	Test.AllValuePrint();
+	/*Test.AllValuePrint();
 
 	std::cout << std::endl;
-	std::cout << Test.Size << std::endl;
+	std::cout << Test.GetSize() << std::endl;
 	std::cout << std::endl;
 
 	for (int i = 0; i < 10; i++)
@@ -35,8 +35,15 @@ int main()
 	Test.AllValuePrint();
 
 	std::cout << std::endl;
-	std::cout << Test.Size << std::endl;
-	std::cout <<  std::endl;
+	std::cout << Test.GetSize() << std::endl;
+	std::cout <<  std::endl;*/
+
+	std::cout << std::endl;
+	for (size_t i = 0; i < Test.GetSize(); i++)
+	{
+		std::cout << Test[i] << std::endl;
+	}
+	std::cout << std::endl;
 
 	return 0;
 }

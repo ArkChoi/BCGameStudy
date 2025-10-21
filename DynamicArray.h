@@ -1,18 +1,84 @@
 #pragma once
+#include "DynamicArray.h"
 
+#include <iostream>
+
+template<typename T>
 class TDynamicArray
 {
 public:
-	TDynamicArray();
-	virtual ~TDynamicArray();
+	TDynamicArray() 
+	{
+	
+	}
+	virtual ~TDynamicArray()
+	{
+		if (Data) 
+		{
+			delete[] Data;
+		}
+	}
 
-	int* Data;
+protected:
+	T* Data = nullptr;
 
-	int Size = 0; //실 자료 입력 양
-	int Capacity = 0; //자료가 잡혀있는 크기
+	size_t Size = 0; //실 자료 입력 양 + C++에서 자료형 계산때 미리 정의해둔 size_t를 사용한다고 한다.
+	size_t Capacity = 0; //자료가 잡혀있는 크기
 
-	int Index = 0;
+	int CurrentIndex = 0;
 
-	void PushBack(int Value);
-	void AllValuePrint();
+public:
+	size_t GetSize()
+	{
+		return Size;
+	}
+	size_t GetCapacity()
+	{
+		return Capacity;
+	}
+
+	//무슨 오퍼레이터? 연산자 오버로딩이라고 불러오는 시스템을 바꾸는 듯 합니다.
+	T& operator[](size_t _Index)
+	{
+		return Data[_Index];
+	}
+
+	void PushBack(T Value)
+	{
+		if (CurrentIndex < Capacity)
+		{
+			Data[CurrentIndex] = Value;
+			CurrentIndex++;
+			Size++;
+		}
+		else
+		{
+			if (Capacity == 0)
+			{
+				Capacity = 1;
+			}
+			T* NewArray = new T[Capacity * 2];
+			for (size_t i = 0; i < Size; i++)
+			{
+				NewArray[i] = Data[i];
+			}
+			delete[] Data;
+
+			Data = NewArray;
+
+			Data[CurrentIndex] = Value;
+			CurrentIndex++;
+			Size++;
+
+			Capacity *= 2;
+		}
+	}
+
+	void AllValuePrint()
+	{
+		for (size_t i = 0; i < Size; i++)
+		{
+			std::cout << Data[i] << std::endl;
+		}
+	}
 };
