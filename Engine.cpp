@@ -87,7 +87,9 @@ void FEngine::Init()
 
     MapFile.close();
 
-    std::cout << GetWorld()->GetAllActors().size() << std::endl;
+    std::vector<AActor*> Temp;
+    GetWorld()->GetAllActors(Temp);
+    std::cout << Temp.size() << std::endl;
 }
 
 void FEngine::Run()
