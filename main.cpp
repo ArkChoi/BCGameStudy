@@ -11,11 +11,6 @@ int Sub(int A, int B)
 	return A - B;
 }
 
-void Print(int A, int B, int (*FP)(int, int))
-{
-	std::cout << FP(A, B) << std::endl;
-}
-
 void Sort(bool (*Compare)(int , int ), int A, int B)
 {
 	int Numbers[10] = { 10, 2, 1, 5, 6, 3, 9, 7, 8, 4 };
@@ -54,15 +49,44 @@ void OnReceive(int *(Callback)())
 	Callback();
 }
 
+//void Print(void* Numbers, int _SizeOfElement, int _NumberOfElement)
+//{
+//	for (int i = 0; i < _NumberOfElement; i++)
+//	{
+//		std::cout << *(Numbers+(i*_SizeOfElement)) << std::endl;
+//	}
+//}
+
+////meta programing
+//template<typename T>
+//void Print(T* Numbers, int Size)
+//{
+//	for (int i = 0; i < Size; i++)
+//	{
+//		std::count << Numbers[i] << std::endl;
+//	}
+//}
+
+template<typename T>
+class TemplateClass
+{
+public:
+	T Data;
+};
+
 int main()
 {
-	Print(2, 3, Sum);
+	TemplateClass<int> Temp;
+	Temp.Data = 10;
 
-	GEngine->Init();
+	TemplateClass<float> fTemp;
+	fTemp.Data = 10.0f;
+
+	/*GEngine->Init();
 	GEngine->Run();
 	GEngine->Term();
 
-	delete GEngine;
+	delete GEngine;*/
 
 	return 0;
 }
