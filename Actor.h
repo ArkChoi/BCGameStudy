@@ -33,6 +33,11 @@ public:
 		Shape = Temp;
 	}
 
+	__forceinline int GetZOrder() const
+	{
+		return ZOrder;
+	}
+
 protected:
 
 	int ZOrder;

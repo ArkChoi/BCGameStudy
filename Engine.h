@@ -33,10 +33,6 @@ public: //사용자 입장의 설계
 		return KeyCode;
 	}
 
-	//정렬용 코드 강사님이 알려주시면 다시 만들자꾸나
-	void Sort();
-	void Swap(AActor* FirstIndex, AActor* SecondIndex);
-
 protected: //내부 설계
 	void Input();
 	void Tick();
