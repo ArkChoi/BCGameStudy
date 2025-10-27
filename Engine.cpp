@@ -13,6 +13,7 @@
 #include "Goal.h"
 #include "Floor.h"
 #include "Wall.h"
+#include "GameMode.h"
 
 FEngine* FEngine::Instance = nullptr;
 
@@ -31,6 +32,8 @@ FEngine::~FEngine()
 
 void FEngine::Init()
 {
+    srand((unsigned int)time(nullptr));
+
     World = new UWorld;
     std::ifstream MapFile("Level01.map");
 
@@ -90,6 +93,9 @@ void FEngine::Init()
     std::vector<AActor*> Temp;
     GetWorld()->GetAllActors(Temp);
     std::cout << Temp.size() << std::endl;
+
+    //UE Gameplay Framework
+    World->SpawnActor(new AGameMode());
 }
 
 void FEngine::Run()
