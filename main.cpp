@@ -1,17 +1,54 @@
-#include <iostream>
-#include <vector>
-#include <list>
+//#include <iostream>
+//#include <vector>
+//#include <list>
+//
+//#include "Engine.h"
+//#include "DynamicArray.h"
+//
+//int main()
+//{
+//	GEngine->Init();
+//	GEngine->Run();
+//	GEngine->Term();
+//
+//	delete GEngine;
+//
+//	return 0;
+//}
 
-#include "Engine.h"
-#include "DynamicArray.h"
+//#include <iostream>
 
-int main()
+//c++ console entry -> ios, window, linux
+#include <SDL3/SDL.h> //이런 사용 방식은 경로 지정이 되었을때만 가능하다
+#include <SDL3/SDL_main.h>
+
+#pragma comment(lib, "SDL3")
+
+int SDL_main(int argc, char* argv[])
 {
-	GEngine->Init();
-	GEngine->Run();
-	GEngine->Term();
+	SDL_Init(SDL_INIT_VIDEO);
 
-	delete GEngine;
+	SDL_Window* MyWindow = SDL_CreateWindow("Game", 640, 480, SDL_WINDOW_OPENGL);
 
+	SDL_Event MyEvent;
+
+	while (true)
+	{
+		if (SDL_PollEvent(&MyEvent))
+		{
+			if( MyEvent.type == SDL_EVENT_QUIT )
+			{
+				break;
+			}
+			//윈도우 처리
+		}
+		else
+		{
+			//화면 업데이트
+		}
+	}
+
+	SDL_DestroyWindow(MyWindow);
+	SDL_Quit();
 	return 0;
 }
