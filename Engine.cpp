@@ -44,7 +44,7 @@ void FEngine::Init()
             for (int X = 0; X < Line.size(); X++)
             {
                 {
-                    AActor* NewActor = new AWall();
+                    AActor* NewActor = new AFloor();
                     NewActor->SetActorLocation(FVector2D(X, Y));
                     NewActor->SetShape(' ');
                     World->SpawnActor(NewActor);

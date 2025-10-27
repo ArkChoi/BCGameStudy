@@ -22,6 +22,7 @@ public:
 		this->Data = new T[Capacity];
 		memmove(this->Data, RHS.Data, Size*sizeof(int));
 	}
+
 	virtual ~TDynamicArray()
 	{
 		if (Data) 

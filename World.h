@@ -16,6 +16,9 @@ public:
 	virtual void Tick();
 	virtual void Render();
 
+	//CheckCollision
+	virtual bool SetSimulatePhysics(const AActor* OtherActor);
+
 	void SortActor();
 
 protected:

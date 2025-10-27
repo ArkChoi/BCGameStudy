@@ -13,10 +13,5 @@ int main()
 
 	delete GEngine;
 
-	TDynamicArray<float> Data;
-	TDynamicArray<float> Data2 = Data;
-
-	Data2 = Data;
-
 	return 0;
 }

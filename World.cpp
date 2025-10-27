@@ -38,6 +38,11 @@ void UWorld::Render()
 	}
 }
 
+bool UWorld::SetSimulatePhysics(const AActor* OtherActor)
+{
+	return false;
+}
+
 void UWorld::SortActor()
 {
 	for (int j = 0; j < Actors.size(); j++)
