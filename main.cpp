@@ -67,12 +67,19 @@ int SDL_main(int argc, char* argv[])
 
 			SDL_SetRenderDrawColor(MyRenderer, 255, 255, 0, 255);
 			//중심이 0,0 반지름 1
-			for (float i = 0; i < 360; i+=0.1f)
-			{
-				//int Radius = SDL_rand(640) + 10;
-				float X = (float)SDL_cos(i) *100 + 320;
-				float Y = (float)SDL_sin(i) *100 + 240;
-				SDL_RenderPoint(MyRenderer, X, Y);
+			int Radius = 100;
+			int CenterX = 320;
+			int CenterY = 240;
+			int Line = 30;
+			for (float Degree = 0; Degree <= 360; Degree += Line)
+			{	
+
+				float OldX = (float)SDL_cos(((Degree - Line) * SDL_PI_F / 180.0f)) * Radius + CenterX; //라디안이라는 개념으로 사용 몇 도 보다 정확하다고 한다.
+				float OldY = (float)SDL_sin(((Degree - Line) * SDL_PI_F / 180.0f)) * Radius + CenterY;
+
+				float X = (float)SDL_cos((Degree * SDL_PI_F / 180.0f)) * Radius + CenterX;
+				float Y = (float)SDL_sin((Degree * SDL_PI_F / 180.0f)) * Radius + CenterY;
+				SDL_RenderLine(MyRenderer, OldX, OldY, X, Y);
 			}
 
 			SDL_RenderPresent(MyRenderer); //Render라는 붗에 그림을 그릴 것을 모아두고 한번에 그리라고 시키는 방식이다.
