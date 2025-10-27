@@ -29,25 +29,32 @@ int SDL_main(int argc, char* argv[])
 	SDL_Init(SDL_INIT_VIDEO);
 
 	SDL_Window* MyWindow = SDL_CreateWindow("Game", 640, 480, SDL_WINDOW_OPENGL);
+	SDL_Renderer* MyRenderer = SDL_CreateRenderer(MyWindow, nullptr);
 
 	SDL_Event MyEvent;
 
-	while (true)
+	bool bIsRunning = true;
+
+	while (bIsRunning)
 	{
 		if (SDL_PollEvent(&MyEvent))
 		{
 			if( MyEvent.type == SDL_EVENT_QUIT )
 			{
-				break;
+				bIsRunning = false;
 			}
 			//윈도우 처리
 		}
 		else
 		{
+			SDL_RenderClear(MyRenderer);
+			SDL_SetRenderDrawColor(MyRenderer, 255, 0, 0, 255);
 			//화면 업데이트
+			SDL_RenderPresent(MyRenderer); //Render라는 붗에 그림을 그릴 것을 모아두고 한번에 그리라고 시키는 방식이다.
 		}
 	}
 
+	SDL_DestroyRenderer(MyRenderer);
 	SDL_DestroyWindow(MyWindow);
 	SDL_Quit();
 	return 0;
