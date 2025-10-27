@@ -13,6 +13,8 @@ public:
 
 	}
 
+
+
 	FVector2D& operator=(const FVector2D& RHS)
 	{
 		this->X = RHS.X;
