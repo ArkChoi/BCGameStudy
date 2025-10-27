@@ -7,6 +7,13 @@ public:
 	{
 		
 	}
+
+	//복사 생성자
+	FVector2D(int InX = 0, int InY = 0) : X(InX), Y(InY)
+	{
+
+	}
+
 	virtual ~FVector2D()
 	{
 

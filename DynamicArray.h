@@ -11,6 +11,17 @@ public:
 	{
 	
 	}
+
+	//깊은 복사, 복사 생성자
+	TDynamicArray(const TDynamicArray<T>& RHS)
+	{
+		this->Size = RHS.Size;
+		this->Capacity = RHS.Capacity;
+		this->CurrentIndex = RHS.CurrentIndex;
+
+		this->Data = new T[Capacity];
+		memmove(this->Data, RHS.Data, Size*sizeof(int));
+	}
 	virtual ~TDynamicArray()
 	{
 		if (Data) 
