@@ -1,5 +1,7 @@
 #include "Actor.h"
 #include "Engine.h"
+#include "Component.h"
+
 #include <iostream>
 #include <Windows.h>
 
@@ -9,6 +11,10 @@ AActor::AActor()
 
 AActor::~AActor()
 {
+	for (auto Component : Components)
+	{
+		delete Component;
+	}
 }
 
 void AActor::Tick()
