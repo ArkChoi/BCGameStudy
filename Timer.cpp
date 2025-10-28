@@ -16,7 +16,7 @@ void UTimer::Tick()
 {
 	CurrentTime = SDL_GetTicksNS();
 
-	DeltaSeconds = (double)(CurrentTime - LastTime) / 100000000.;
+	DeltaSeconds = (double)(CurrentTime - LastTime) / 1000000000.0;
 
 	LastTime = CurrentTime;
 }
