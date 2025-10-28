@@ -26,12 +26,12 @@
 
 int SDL_main(int argc, char* argv[])
 {
-	SDL_Time Timer = SDL_GetTicks64();
+	SDL_Time deltaSeconds = SDL_GetTicks64();
 
 	GEngine->Init();
 	GEngine->Run();
 	GEngine->Term();
 
-	Timer = SDL_GetTicks64() - Timer;
+	deltaSeconds = SDL_GetTicks64() - deltaSeconds;
 	return 0;
 }

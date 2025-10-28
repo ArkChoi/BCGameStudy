@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL3/SDL.h>
+#include "Input.h"
 #pragma comment(lib, "SDL3")
 
 class UWorld;
@@ -34,7 +35,7 @@ public: //사용자 입장의 설계
 
 	__forceinline int GetKeyCode() const
 	{
-		return KeyCode;
+		return UInput::KeyCode;
 	}
 
 	//편의성 때문에 퍼블릭임
@@ -43,6 +44,8 @@ public: //사용자 입장의 설계
 	SDL_Renderer* MyRenderer;
 	//편의성 때문에 퍼블릭임
 	SDL_Event MyEvent;
+
+	double GetWorldDeltaSeconds();
 
 protected: //내부 설계
 	void Input();
@@ -53,9 +56,14 @@ protected: //내부 설계
 
 	bool BIsRunning = true;
 
-	int KeyCode = 0;
+	//int KeyCode = 0;
 
 	static FEngine* Instance;
+
+	SDL_Time DeltaSeconds;
+
+	class UTimer* Timer = nullptr;
+	class UInput* InputDevice = nullptr;
 
 };
 

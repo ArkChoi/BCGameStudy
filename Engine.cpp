@@ -14,6 +14,8 @@
 #include "Floor.h"
 #include "Wall.h"
 #include "GameMode.h"
+#include "Timer.h"
+#include "Input.h"
 
 #pragma comment(lib, "SDL3")
 
@@ -25,11 +27,24 @@ FEngine* FEngine::Instance = nullptr;
 FEngine::FEngine()
 {
 	World = nullptr;
+	Timer = new UTimer();
+	InputDevice = new UInput();
 }
 
 FEngine::~FEngine()
 {
-
+	if (World)
+	{
+		delete World;
+	}
+	if (Timer)
+	{
+		delete Timer;
+	}
+	if (InputDevice)
+	{
+		delete InputDevice;
+	}
 }
 
 void FEngine::Init()
@@ -114,12 +129,11 @@ void FEngine::Run()
 {
 	while (BIsRunning)
 	{
-		if (SDL_PollEvent(&MyEvent))
-		{
+		Timer->Tick();
 
-		}
+		SDL_PollEvent(&MyEvent);
 
-		//Input(); //위 이벤트가 인풋을 대체함
+		Input(); 
 		Tick();
 		Render();
 	}
@@ -132,9 +146,14 @@ void FEngine::Term()
 	SDL_Quit();
 }
 
+double FEngine::GetWorldDeltaSeconds()
+{
+	return Timer->DeltaSeconds;
+}
+
 void FEngine::Input()
 {
-	KeyCode = _getch();
+	InputDevice->Tick();
 }
 
 void FEngine::Tick()

@@ -26,11 +26,11 @@ void AActor::Render()
 	std::cout << Shape;
 
 	SDL_SetRenderDrawColor(GEngine->MyRenderer, Color.r, Color.g, Color.b, Color.a);
-	int SizeX = 30;
-	int SizeY = 30;
+	int SizeX = 80;
+	int SizeY = 60;
 	
 	//SDL_RenderDrawPoint(GEngine->MyRenderer, (float)Location.X, (float)Location.Y);
-	SDL_FRect DrawRect = { Location.X * SizeX , Location.Y * SizeY , SizeX , SizeY };
+	SDL_FRect DrawRect = { (float)(Location.X * SizeX) , (float)(Location.Y * SizeY) , (float)SizeX , (float)SizeY };
 	SDL_RenderFillRect(GEngine->MyRenderer, &DrawRect);
 }
 

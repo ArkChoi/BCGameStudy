@@ -136,9 +136,11 @@
     <ClCompile Include="Floor.cpp" />
     <ClCompile Include="GameMode.cpp" />
     <ClCompile Include="Goal.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
@@ -149,8 +151,10 @@
     <ClInclude Include="Floor.h" />
     <ClInclude Include="GameMode.h" />
     <ClInclude Include="Goal.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="World.h" />

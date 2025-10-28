@@ -4,6 +4,8 @@
 #include "Engine.h"
 #include "World.h"
 
+#include "SDL3/SDL.h"
+
 APlayer::APlayer()
 {
 	ZOrder = 4; //이건 전적인 선택이라고 한다 , 몬스터가 올라와도 되고 , 플레이어가 올라와도 된다.
@@ -23,17 +25,24 @@ void APlayer::Tick()
 
 	switch (GetKeyCode)
 	{
-	case 'w':
+	case SDLK_w:
+	case SDLK_UP:
 		Location.Y--;
 		break;
-	case 's':
+	case  SDLK_s:
+	case SDLK_DOWN:
 		Location.Y++;
 		break;
-	case 'a':
+	case  SDLK_a:
+	case SDLK_LEFT:
 		Location.X--;
 		break;
-	case 'd':
+	case  SDLK_d:
+	case SDLK_RIGHT:
 		Location.X++;
+		break;
+	case SDLK_ESCAPE:
+		exit(1);
 		break;
 	default:
 		break;
