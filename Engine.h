@@ -1,4 +1,7 @@
 #pragma once
+#include <SDL3/SDL.h>
+#pragma comment(lib, "SDL3")
+
 class UWorld;
 class AActor;
 
@@ -22,6 +25,7 @@ public: //사용자 입장의 설계
 	void Init(); //초기화
 	void Run();  //실행
 	void Term(); //종료
+	void OpenLevel();
 
 	__forceinline  UWorld* GetWorld() const
 	{
@@ -32,6 +36,13 @@ public: //사용자 입장의 설계
 	{
 		return KeyCode;
 	}
+
+	//편의성 때문에 퍼블릭임
+	SDL_Window* MyWindow;
+	//편의성 때문에 퍼블릭임
+	SDL_Renderer* MyRenderer;
+	//편의성 때문에 퍼블릭임
+	SDL_Event MyEvent;
 
 protected: //내부 설계
 	void Input();
@@ -51,5 +62,4 @@ protected: //내부 설계
 
 //실제 엔진 코드라고..
 //extern FEngine* GEngine;
-
 #define GEngine		FEngine::GetInstance()
