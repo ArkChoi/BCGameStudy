@@ -11,7 +11,7 @@ AGoal::AGoal()
 	Paper->SetOwner(this);
 	Paper->ZOrder = 1;
 	Paper->Color = { 255,255,0,0 };
-	AddComponent(Paper);
+	SetupAttachment(Paper);
 }
 
 AGoal::~AGoal()

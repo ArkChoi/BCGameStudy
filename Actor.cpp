@@ -25,21 +25,6 @@ void AActor::Tick()
 //{
 //}
 
-bool AActor::CheakCollsion(const AActor* OtherActor)
-{
-	if (OtherActor->bIsOverlap)
-	{
-		return false;
-	}
-
-	if (this != OtherActor && OtherActor->bIsCollision && bIsCollision
-		&& this->Location == OtherActor->Location)
-	{
-		return true;
-	}
-	return false;
-}
-
 void AActor::ActorBeginOverlap()
 {
 }
@@ -48,7 +33,7 @@ void AActor::Hit()
 {
 }
 
-void AActor::AddComponent(UComponent* InComponent)
+void AActor::SetupAttachment(UComponent* InComponent)
 {
 	Components.push_back(InComponent);
 }

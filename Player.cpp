@@ -4,20 +4,29 @@
 #include "Engine.h"
 #include "World.h"
 
+#include "CollsionComponent.h"
+#include "PaperFillpbookComponent.h"
+
 #include "SDL3/SDL.h"
 
 APlayer::APlayer()
 {
 	//ZOrder = 4; //이건 전적인 선택이라고 한다 , 몬스터가 올라와도 되고 , 플레이어가 올라와도 된다.
-	bIsCollision = true;
+	//bIsCollision = true;
 	//Color = { 255,0,0,0 };
 
-	UPaperFillpbookComponent* Paper = new UPaperFillpbookComponent();
-	Paper->SetShape('P');
-	Paper->SetOwner(this);
-	Paper->ZOrder = 4;
-	Paper->Color = {255,0,0,0};
-	AddComponent(Paper);
+	Collision = new UCollsionComponent();
+	Collision->SetOwner(this);
+	Collision->bIsCollision = true;
+	Collision->bIsOverlap = true;
+	SetupAttachment(Collision);
+
+	Flipbook = new UPaperFillpbookComponent();
+	Flipbook->SetShape('P');
+	Flipbook->SetOwner(this);
+	Flipbook->ZOrder = 4;
+	Flipbook->Color = {255,0,0,0};
+	SetupAttachment(Flipbook);
 }
 
 APlayer::~APlayer()
@@ -61,10 +70,17 @@ void APlayer::Tick()
 	bool bFlag = false;
 	for (auto OtherActor : AllActors)
 	{
-		if (CheakCollsion(OtherActor))
+		for (auto Components : OtherActor->Components)
 		{
-			bFlag = true;
-			break;
+			UCollsionComponent* OtherCollision = dynamic_cast<UCollsionComponent*>(Components);
+			if (OtherCollision)
+			{
+				if (Collision->CheakCollsion(OtherCollision))
+				{
+					bFlag = true;
+					break;
+				}
+			}
 		}
 	}
 	if (bFlag)

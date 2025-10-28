@@ -31,7 +31,7 @@ public:
 	virtual void ActorBeginOverlap();
 	virtual void Hit();
 
-	void AddComponent(UComponent* InComponent);
+	void SetupAttachment(UComponent* InComponent);
 
 	std::vector<class UComponent*> Components;
 protected:
@@ -39,8 +39,6 @@ protected:
 	FVector2D Location;
 
 public:
-	bool bIsCollision = false; //충돌감지를 위한 변수 | 본래는 protected 이 맞다만.. 함수 만들기 싫어서 넘긴다고.
-	bool bIsOverlap = true;   //현실에는 없다만 동전이랑 충돌해서 못 먹을 수는 없으니 생긴 개념
 
 	//SDL_Color Color = {255, 255, 255, 255};
 

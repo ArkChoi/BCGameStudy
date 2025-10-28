@@ -1,6 +1,8 @@
 #pragma once
 #include "Actor.h"
-#include "PaperFillpbookComponent.h"
+
+class UCollsionComponent;
+class UPaperFillpbookComponent;
 
 class APlayer : public AActor
 {
@@ -9,6 +11,9 @@ public:
 	virtual ~APlayer();
 
 	virtual void Tick() override;
+
+	UCollsionComponent* Collision;
+	UPaperFillpbookComponent* Flipbook;
 
 	//Overloading
 	void Jump(int a){}
