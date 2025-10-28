@@ -39,7 +39,7 @@ void AGameMode::Tick()
 			if(Player->GetActorLocation() == Actor->GetActorLocation())
 			{
 				//game over
-				exit(-1);
+				//exit(-1);
 				break;
 			}
 		}

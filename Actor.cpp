@@ -1,4 +1,5 @@
 #include "Actor.h"
+#include "Engine.h"
 #include <iostream>
 #include <Windows.h>
 
@@ -23,6 +24,9 @@ void AActor::Render()
 
 	SetConsoleCursorPosition((HANDLE)GetStdHandle(STD_OUTPUT_HANDLE), Posistion);
 	std::cout << Shape;
+
+	SDL_SetRenderDrawColor(GEngine->MyRenderer, Color.r, Color.g, Color.b, Color.a);
+	SDL_RenderDrawPoint(GEngine->MyRenderer, (float)Location.X, (float)Location.Y);
 }
 
 //void AActor::SetSimulatePhysics()
