@@ -1,5 +1,6 @@
 #pragma once
 #include "Actor.h"
+#include "PaperFillpbookComponent.h"
 
 class APlayer : public AActor
 {
@@ -12,6 +13,5 @@ public:
 	//Overloading
 	void Jump(int a){}
 	void Jump(float b){}
-
 };
 

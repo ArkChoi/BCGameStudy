@@ -24,6 +24,18 @@
 #include <SDL3/SDL_main.h>
 #include "Engine.h"
 
+class Animal
+{
+public:
+	void Eat(){}
+};
+
+class Plant
+{
+public:
+	void Eat(){}
+};
+
 int SDL_main(int argc, char* argv[])
 {
 	SDL_Time deltaSeconds = SDL_GetTicks64();

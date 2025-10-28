@@ -8,6 +8,5 @@ public:
 	virtual ~AGameMode();
 
 	virtual void Tick() override;
-	virtual void Render() override;
 };
 

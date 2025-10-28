@@ -60,7 +60,3 @@ void AGameMode::Tick()
 
 	SDL_Log("deltaSeconds : %f", GEngine->GetWorldDeltaSeconds());
 }
-
-void AGameMode::Render()
-{
-}

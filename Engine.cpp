@@ -76,7 +76,7 @@ void FEngine::OpenLevel()
 				{
 					AActor* NewActor = new AFloor();
 					NewActor->SetActorLocation(FVector2D(X, Y));
-					NewActor->SetShape(' ');
+					//NewActor->SetShape(' ');
 					World->SpawnActor(NewActor);
 				}
 
@@ -84,28 +84,28 @@ void FEngine::OpenLevel()
 				{
 					AActor* NewActor = new AWall();
 					NewActor->SetActorLocation(FVector2D(X, Y));
-					NewActor->SetShape('*');
+					//NewActor->SetShape('*');
 					World->SpawnActor(NewActor);
 				}
 				else if (Line[X] == 'P')
 				{
 					AActor* NewActor = new APlayer();
 					NewActor->SetActorLocation(FVector2D(X, Y));
-					NewActor->SetShape('P');
+					//NewActor->SetShape('P');
 					World->SpawnActor(NewActor);
 				}
 				else if (Line[X] == 'M')
 				{
 					AActor* NewActor = new AMonster();
 					NewActor->SetActorLocation(FVector2D(X, Y));
-					NewActor->SetShape('M');
+					//NewActor->SetShape('M');
 					World->SpawnActor(NewActor);
 				}
 				else if (Line[X] == 'G')
 				{
 					AActor* NewActor = new AGoal();
 					NewActor->SetActorLocation(FVector2D(X, Y));
-					NewActor->SetShape('G');
+					//NewActor->SetShape('G');
 					World->SpawnActor(NewActor);
 				}
 			}
@@ -131,7 +131,16 @@ void FEngine::Run()
 	{
 		Timer->Tick();
 
-		SDL_PollEvent(&MyEvent);
+		if (SDL_PollEvent(&MyEvent))
+		{
+			switch (MyEvent.type)
+			{
+			case SDL_QUIT:
+				BIsRunning = false;
+			default:
+				break;
+			}
+		}
 
 		Input(); 
 		Tick();

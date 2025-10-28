@@ -4,11 +4,20 @@
 #include "Engine.h"
 #include "World.h"
 
+#include "PaperFillpbookComponent.h"
+
 AMonster::AMonster()
 {
-	ZOrder = 3;
+	//ZOrder = 3;
 	bIsCollision = true;
-	Color = {0,0,255,0};
+	//Color = {0,0,255,0};
+
+	UPaperFillpbookComponent* Paper = new UPaperFillpbookComponent();
+	Paper->SetShape('M');
+	Paper->SetOwner(this);
+	Paper->ZOrder = 3;
+	Paper->Color = { 0,0,255,0 };
+	AddComponent(Paper);
 }
 
 AMonster::~AMonster()
