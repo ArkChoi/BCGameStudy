@@ -19,7 +19,6 @@
 //#include <iostream>
 
 //c++ console entry -> ios, window, linux
-#define SDL_ENABLE_OLD_NAMES
 
 #include <SDL3/SDL_main.h>
 #include "Engine.h"

@@ -2,6 +2,8 @@
 #include "SceneComponent.h"
 #include "SDL3/SDL.h"
 
+#include <string>
+
 class UPaperFillpbookComponent : public USceneComponent
 {
 public:
@@ -26,7 +28,12 @@ public:
 		return ZOrder;
 	}
 
+	void LoadBMP(std::string Filename);
+
 	SDL_Color Color = { 255, 255, 255, 255 };
+	SDL_Surface* BitmapImage = nullptr;
+	SDL_Texture* Texture = nullptr;//GPU 건들기 위해 만듬 | 대부분이런 작업을 거펴야 한다고.
+
 	int ZOrder;
 	char Shape;
 };

@@ -24,6 +24,20 @@ public:
 		Location.Y = Value.Y;
 	}
 
+	template<typename T>
+	T* GetComponent()
+	{
+		for (auto Component : Components)
+		{
+			if (dynamic_cast<T*>(Component))
+			{
+				return dynamic_cast<T*>(Component);
+			}
+		}
+
+		return nullptr;
+	}
+
 	//virtual void SetSimulatePhysics();
 
 	bool CheakCollsion(const AActor* Ohter); //지금은 틱에서 체크하는 충돌처리 엔진은 완전히 다르다.
