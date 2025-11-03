@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <Windows.h>
+#include "SDL3/SDL.h"
 
 
 UPaperFillpbookComponent::UPaperFillpbookComponent()
@@ -28,7 +29,20 @@ UPaperFillpbookComponent::~UPaperFillpbookComponent()
 
 void UPaperFillpbookComponent::Tick()
 {
+	TotalTime += (float)GEngine->GetWorldDeltaSeconds();
+	if (TotalTime < ExecuteTime)
+	{
+		return;
+	}
 
+	TotalTime = 0.f;
+	if (bAnimation)
+	{
+		XIndex++;
+		XIndex = (float)((int)XIndex % (int)SpriteCountX);
+		// 잘 안나오니 사용한 함수
+		// SDL_Log("Index X : %f",&XIndex);
+	}
 }
 
 void UPaperFillpbookComponent::Render()
@@ -51,7 +65,23 @@ void UPaperFillpbookComponent::Render()
 	}
 	else
 	{
-		SDL_FRect SourceRect = { 0,0,(float)BitmapImage->w,(float)BitmapImage->h }; //이미지를 잘라서 사용도 가능함 그부분이 BitmapImage->w ... 이부분
+		SDL_FRect SourceRect;
+		if (bAnimation)
+		{
+			int SpirteSizeX = BitmapImage->w / SpriteCountX;
+			int SpirteSizeY = BitmapImage->h / SpriteCountY;
+			SourceRect = { 
+				XIndex * SpirteSizeX ,
+				YIndex * SpirteSizeY ,
+				(float)SpirteSizeX ,
+				(float)SpirteSizeY
+			};
+		}
+		else
+		{
+			SourceRect = { 0,0,(float)BitmapImage->w,(float)BitmapImage->h };
+		}
+
 		SDL_FRect DestinationRect = { 
 			(float)(Posistion.X * SizeX),
 			(float)(Posistion.Y * SizeY),
@@ -66,5 +96,16 @@ void UPaperFillpbookComponent::LoadBMP(std::string Filename)
 {
 	// 왜 2개 거쳐가요? CPU->Memory->GPU 이방식이어야 함 Apple은 그래서 CPU->Memory<-GPU 구조로 만듬
 	BitmapImage = SDL_LoadBMP(Filename.c_str()); //원본 이미지 (압축된 이미지를 푸는 것)
+
+	SDL_SetColorKey(BitmapImage, true, 
+		SDL_MapRGBA(
+			SDL_GetPixelFormatDetails(BitmapImage->format),
+			nullptr,
+			ColorKey.r,
+			ColorKey.g,
+			ColorKey.b,
+			ColorKey.a)
+	);
+
 	Texture = SDL_CreateTextureFromSurface(GEngine->MyRenderer , BitmapImage); //메모리로 넘길 친구 복사하기
 }

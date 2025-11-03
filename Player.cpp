@@ -44,18 +44,22 @@ void APlayer::Tick()
 	case SDLK_w:
 	case SDLK_UP:
 		Location.Y--;
+		Flipbook->YIndex = 2;
 		break;
 	case  SDLK_s:
 	case SDLK_DOWN:
 		Location.Y++;
+		Flipbook->YIndex = 3;
 		break;
 	case  SDLK_a:
 	case SDLK_LEFT:
 		Location.X--;
+		Flipbook->YIndex = 0;
 		break;
 	case  SDLK_d:
 	case SDLK_RIGHT:
 		Location.X++;
+		Flipbook->YIndex = 1;
 		break;
 	case SDLK_ESCAPE:
 		exit(1);

@@ -30,6 +30,10 @@ void UWorld::Tick()
 {
 	for (auto Actor : Actors)
 	{
+		for (auto Component : Actor->Components)
+		{
+			Component->Tick();
+		}
 		Actor->Tick();
 	}
 }

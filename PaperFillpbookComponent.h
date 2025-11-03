@@ -33,6 +33,16 @@ public:
 	SDL_Color Color = { 255, 255, 255, 255 };
 	SDL_Surface* BitmapImage = nullptr;
 	SDL_Texture* Texture = nullptr;//GPU 건들기 위해 만듬 | 대부분이런 작업을 거펴야 한다고.
+	SDL_Color ColorKey = { 255, 0, 255, 255}; //요상한 색갈이라 날려버리는 용도로 주로 사용하는 값이라고 함
+
+	bool bAnimation = false;
+	float TotalTime = 0.0f;
+	float ExecuteTime = 0.5f;
+
+	float SpriteCountX = 5;
+	float SpriteCountY = 5;
+	float XIndex = 0;
+	float YIndex = 0;
 
 	int ZOrder;
 	char Shape;

@@ -12,12 +12,12 @@ AFloor::AFloor()
 	Collision->bIsCollision = false;
 	Collision->bIsOverlap = false;
 
-	UPaperFillpbookComponent* Paper = new UPaperFillpbookComponent();
-	Paper->SetShape(' ');
-	Paper->SetOwner(this);
-	Paper->ZOrder = 0;
-	Paper->Color = { 255,255,255,0 };
-	SetupAttachment(Paper);
+	Flipbook = new UPaperFillpbookComponent();
+	Flipbook->SetShape(' ');
+	Flipbook->SetOwner(this);
+	Flipbook->ZOrder = 0;
+	Flipbook->Color = { 255,255,255,0 };
+	SetupAttachment(Flipbook);
 }
 
 AFloor::~AFloor()

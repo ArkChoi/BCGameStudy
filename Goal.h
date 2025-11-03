@@ -5,5 +5,7 @@ class AGoal : public AActor
 public:
 	AGoal();
 	virtual ~AGoal();
+
+	class UPaperFillpbookComponent* Flipbook = nullptr;
 };
 

@@ -77,7 +77,14 @@ void FEngine::OpenLevel()
 				{
 					AActor* NewActor = new AFloor();
 					NewActor->SetActorLocation(FVector2D(X, Y));
-					NewActor->GetComponent<UPaperFillpbookComponent>()->LoadBMP("./Data/floor.bmp");
+					//unity 스타일이라고..
+					//NewActor->GetComponent<UPaperFillpbookComponent>()->LoadBMP("./Data/floor.bmp");
+					//UE 스타일
+					AFloor* DownActor = dynamic_cast<AFloor*>(NewActor); //다운케스팅 실패시 null을 반환
+					if (DownActor)
+					{
+						DownActor->Flipbook->LoadBMP("./Data/floor.bmp");
+					}
 					//NewActor->SetShape(' ');
 					World->SpawnActor(NewActor);
 				}
@@ -95,6 +102,7 @@ void FEngine::OpenLevel()
 					AActor* NewActor = new APlayer();
 					NewActor->SetActorLocation(FVector2D(X, Y));
 					NewActor->GetComponent<UPaperFillpbookComponent>()->LoadBMP("./Data/Player.bmp");
+					NewActor->GetComponent<UPaperFillpbookComponent>()->bAnimation = true;
 					//NewActor->SetShape('P');
 					World->SpawnActor(NewActor);
 				}
@@ -102,6 +110,7 @@ void FEngine::OpenLevel()
 				{
 					AActor* NewActor = new AMonster();
 					NewActor->SetActorLocation(FVector2D(X, Y));
+					NewActor->GetComponent<UPaperFillpbookComponent>()->ColorKey = { 255,255,255,255 };
 					NewActor->GetComponent<UPaperFillpbookComponent>()->LoadBMP("./Data/Slime.bmp");
 					//NewActor->SetShape('M');
 					World->SpawnActor(NewActor);

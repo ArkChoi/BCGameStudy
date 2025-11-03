@@ -13,7 +13,7 @@ public:
 	virtual void Tick() override;
 
 	UCollsionComponent* Collision;
-	UPaperFillpbookComponent* Flipbook;
+	UPaperFillpbookComponent* Flipbook = nullptr;
 
 	//Overloading
 	void Jump(int a){}

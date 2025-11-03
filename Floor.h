@@ -5,5 +5,7 @@ class AFloor : public AActor
 public:
 	AFloor();
 	virtual ~AFloor();
+
+	class UPaperFillpbookComponent* Flipbook = nullptr;
 };
 
