@@ -3,6 +3,8 @@
 #include "Input.h"
 #pragma comment(lib, "SDL3")
 
+#include <string>
+
 class UWorld;
 class AActor;
 
@@ -26,7 +28,7 @@ public: //사용자 입장의 설계
 	void Init(); //초기화
 	void Run();  //실행
 	void Term(); //종료
-	void OpenLevel();
+	void OpenLevel(std::string LevelName);
 
 	__forceinline  UWorld* GetWorld() const
 	{

@@ -37,7 +37,6 @@ public:
 
 	bool bAnimation = false;
 	float TotalTime = 0.0f;
-	float ExecuteTime = 0.5f;
 
 	float SpriteCountX = 5;
 	float SpriteCountY = 5;
@@ -46,5 +45,11 @@ public:
 
 	int ZOrder;
 	char Shape;
+
+	int SizeX = 60;
+	int SizeY = 60;
+
+protected:
+	float ExecuteTime = 0.2f;
 };
 

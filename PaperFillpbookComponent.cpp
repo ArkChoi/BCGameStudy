@@ -50,8 +50,6 @@ void UPaperFillpbookComponent::Render()
 	COORD Posistion;
 	Posistion.X = GetOwner()->GetActorLocation().X;
 	Posistion.Y = GetOwner()->GetActorLocation().Y;
-	int SizeX = 80;
-	int SizeY = 60;
 
 	/*SetConsoleCursorPosition((HANDLE)GetStdHandle(STD_OUTPUT_HANDLE), Posistion);
 	std::cout << Shape;*/
@@ -68,8 +66,8 @@ void UPaperFillpbookComponent::Render()
 		SDL_FRect SourceRect;
 		if (bAnimation)
 		{
-			int SpirteSizeX = BitmapImage->w / SpriteCountX;
-			int SpirteSizeY = BitmapImage->h / SpriteCountY;
+			int SpirteSizeX = (int)(BitmapImage->w / SpriteCountX);
+			int SpirteSizeY = (int)(BitmapImage->h / SpriteCountY);
 			SourceRect = { 
 				XIndex * SpirteSizeX ,
 				YIndex * SpirteSizeY ,
